@@ -1,0 +1,13 @@
+header {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+.header-home {
+  background-color: transparent;
+}
+.header-shop {
+  background-color: white;
+}

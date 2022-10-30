@@ -1,4 +1,4 @@
 const Shop = () => {
-  return null;
+  return <div> SHOP </div>;
 };
 export default Shop;
