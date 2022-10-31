@@ -22,9 +22,25 @@
     --brightness: 0.95;
   }
 }
+@media all {
+  :root {
+    --bg-size: 1800px;
+  }
+}
+@media (min-width: 1800px) and (min-aspect-ratio: 3/2) {
+  :root {
+    --bg-size: 120vw;
+  }
+}
+@media (max-aspect-ratio: 3/2) and (min-height: 1150px) {
+  :root {
+    --bg-size: 150vh;
+  }
+}
+
 #home-root {
   background-image: url('../assets/pexels-burst-374890-min.jpg');
-  background-size: 1800px;
+  background-size: var(--bg-size);
   background-position: var(--bg-position);
   filter: grayscale(20%);
   filter: brightness(var(--brightness));
