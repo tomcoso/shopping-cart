@@ -6,13 +6,13 @@ function Home() {
     <div id="home-root">
       <section>
         <div id="home-top">
-          <h1>Air</h1>
-          <h1>Clarity</h1>
+          <h1>wear</h1>
+          <h1>the sky</h1>
         </div>
         <div id="home-bottom">
-          <p data-testid="home-text">Wear the sky with us</p>
+          <p data-testid="home-text">Fall collection</p>
           <Link to="shop" role="button">
-            Shop
+            SHOP
           </Link>
         </div>
       </section>
