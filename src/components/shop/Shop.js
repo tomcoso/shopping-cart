@@ -24,7 +24,8 @@ const Shop = () => {
           </button>
         ))}
       </nav>
-      <section>
+      <section aria-label={currentCategory}>
+        <h1>{currentCategory === "all" ? "all products" : currentCategory}</h1>
         {products.map((item) => {
           if (item.category === currentCategory || currentCategory === "all") {
             return <Card itemId={item.id} />;
