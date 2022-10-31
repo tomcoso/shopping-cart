@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/shopping-cart">
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
