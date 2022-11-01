@@ -4,6 +4,8 @@ import "@testing-library/jest-dom";
 import Header from "../Header";
 import userEvent from "@testing-library/user-event";
 import { Link, useLocation } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../store/store";
 
 jest.mock("react-router-dom", () => ({
   Link: jest.fn(),
@@ -12,6 +14,14 @@ jest.mock("react-router-dom", () => ({
 
 const click = jest.fn();
 
+const customRender = () => {
+  render(
+    <Provider store={store}>
+      <Header />
+    </Provider>
+  );
+};
+
 describe("App Header", () => {
   beforeEach(() => {
     Link.mockImplementation(({ children }) => (
@@ -19,16 +29,21 @@ describe("App Header", () => {
         {children}
       </a>
     ));
+
     useLocation.mockImplementation(() => {
       return [{ pathname: "/" }, ""];
     });
+    window.visualViewport = { width: 900, addEventListener: jest.fn() };
   });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   describe("when first mounted", () => {
     test("renders heading, navbar, and cart", () => {
-      const cartObj = [];
-
-      render(<Header cart={cartObj} />);
-      const title = screen.getByRole("heading", { name: "Conditum" });
+      customRender();
+      const title = screen.getByRole("heading", { name: "conditum" });
       const nav = screen.getByRole("navigation");
       const cart = screen.getByTestId("shopping-cart");
 
@@ -37,18 +52,18 @@ describe("App Header", () => {
       expect(cart).toBeInTheDocument();
     });
 
-    test("renders cart with no items in cart", () => {
-      const cartObj = [];
-      render(<Header cart={cartObj} />);
+    test.skip("renders cart with no items in cart", () => {
+      // INTEGRATION
+      customRender();
 
       expect(screen.getByTestId("shopping-cart").textContent).toEqual(
         "Cart (0)"
       );
     });
 
-    test("renders cart with multiple items in cart", () => {
-      const cartObj = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      render(<Header cart={cartObj} />);
+    test.skip("renders cart with multiple items in cart", () => {
+      // INTEGRATION
+      customRender();
 
       expect(screen.getByTestId("shopping-cart").textContent).toEqual(
         "Cart (9)"
@@ -58,8 +73,7 @@ describe("App Header", () => {
 
   describe("when user interacts", () => {
     test("takes user to shopping cart", () => {
-      const cartObj = [];
-      render(<Header cart={cartObj} />);
+      customRender();
       const shopLink = screen.getByTestId("shopping-cart");
 
       userEvent.click(shopLink);
@@ -68,7 +82,7 @@ describe("App Header", () => {
     });
 
     test("takes user to shop", () => {
-      render(<Header cart={[]} />);
+      customRender();
 
       userEvent.click(screen.getByText("Shop"));
 
@@ -76,7 +90,7 @@ describe("App Header", () => {
     });
 
     test("takes user to home", () => {
-      render(<Header cart={[]} />);
+      customRender();
 
       userEvent.click(screen.getByText("Home"));
 
@@ -84,9 +98,9 @@ describe("App Header", () => {
     });
 
     test("takes user to home when click on logo", () => {
-      render(<Header cart={[]} />);
+      customRender();
 
-      userEvent.click(screen.getByText("Conditum"));
+      userEvent.click(screen.getByText("conditum"));
 
       expect(click).toHaveBeenCalled();
     });

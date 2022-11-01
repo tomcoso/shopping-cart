@@ -4,6 +4,9 @@ import userEvent from "@testing-library/user-event";
 import Shop from "../shop/Shop";
 import { ProductContext } from "../../context/ProductContext";
 import { CategoryContext } from "../../context/CategoryContext";
+import Card from "../shop/Card";
+
+jest.mock("../shop/Card.js");
 
 const customRender = () =>
   render(
@@ -36,6 +39,7 @@ describe("after render with context", () => {
   });
 
   test("displays all products by default", () => {
+    Card.mockImplementation(({ itemId }) => <div>{itemId}</div>);
     customRender();
 
     expect(
@@ -45,6 +49,7 @@ describe("after render with context", () => {
   });
 
   test("nav displays each category", () => {
+    Card.mockImplementation(({ itemId }) => <div>{itemId}</div>);
     customRender();
 
     userEvent.click(screen.getByRole("button", { name: "2" }));

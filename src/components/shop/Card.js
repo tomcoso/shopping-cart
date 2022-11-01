@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { ImStarFull, ImStarEmpty, ImStarHalf } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import ItemStars from "./ItemStars";
 
 const Card = (props) => {
   const products = useContext(ProductContext);
@@ -12,23 +12,7 @@ const Card = (props) => {
 
   const item = products[props.itemId - 1];
 
-  const genStars = (val) => {
-    const arr = [];
-    for (let i = 5; i > 0; i--) {
-      if (val > 1) {
-        val -= 1;
-        arr.push(<ImStarFull key={i} />);
-      } else if (val > 0) {
-        val = 0;
-        arr.push(<ImStarHalf key={i} />);
-      } else if (val === 0) {
-        arr.push(<ImStarEmpty key={i} />);
-      }
-    }
-    return arr;
-  };
-
-  const addToCart = (e) => {
+  const addToCart = () => {
     dispatch({ type: "add", payload: { id: item.id, amount: amount } });
   };
 
@@ -37,11 +21,12 @@ const Card = (props) => {
       <img
         src={item.image}
         alt={item.title}
-        onClick={() => navigate(`/${item.id}`)}
+        onClick={() => navigate(`${item.id}`)}
       />
       <div>
-        <h2 onClick={() => navigate(`/${item.id}`)}>{item.title}</h2>
+        <h2 onClick={() => navigate(`${item.id}`)}>{item.title}</h2>
         <div id="add-to-cart">
+          <span data-testid="prod-price">${item.price}</span>
           <input
             max="10"
             step="1"
@@ -55,12 +40,8 @@ const Card = (props) => {
             add to cart
           </button>
         </div>
-        <div data-testid="prod-rating" onClick={() => navigate(`/${item.id}`)}>
-          <span>({item.rating.count})</span>
-          <span>{item.rating.rate}</span>
-          <span id="card-rate">
-            {genStars(item.rating.rate).map((star) => star)}
-          </span>
+        <div onClick={() => navigate(`${item.id}`)}>
+          <ItemStars rating={item.rating} />
         </div>
       </div>
     </div>
