@@ -4,10 +4,10 @@ import { ProductContext } from "./context/ProductContext";
 import { CategoryContext } from "./context/CategoryContext";
 import Header from "./components/Header";
 import "./styling/app.scss";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 const App = () => {
-  const [cart, setCart] = useState([]);
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -26,12 +26,14 @@ const App = () => {
 
   return (
     <>
-      <ProductContext.Provider value={products}>
-        <CategoryContext.Provider value={categories}>
-          <Header cart={cart} />
-          <Outlet />
-        </CategoryContext.Provider>
-      </ProductContext.Provider>
+      <Provider store={store}>
+        <ProductContext.Provider value={products}>
+          <CategoryContext.Provider value={categories}>
+            <Header />
+            <Outlet />
+          </CategoryContext.Provider>
+        </ProductContext.Provider>
+      </Provider>
     </>
   );
 };

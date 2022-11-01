@@ -3,12 +3,17 @@ import "../styling/header.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Header = (props) => {
+const Header = () => {
   const VisualViewport = window.visualViewport;
   const location = useLocation();
   const [width, setWidth] = useState(VisualViewport.width);
   const [navDisplay, setNavDisplay] = useState("mobile-nav-hidden");
+
+  const cart = useSelector((state) => {
+    return state.cart.reduce((a, b) => a + b.amount, 0);
+  });
 
   VisualViewport.addEventListener("resize", (e) => {
     setWidth(VisualViewport.width);
@@ -48,11 +53,9 @@ const Header = (props) => {
         <Link to="shopping-cart">
           <HiOutlineShoppingBag
             size="35px"
-            color={props.cart.length ? "#8c6b4c" : "#1c1c1c"}
+            color={cart ? "#8c6b4c" : "#1c1c1c"}
           />
-          {props.cart.length ? (
-            <div id="cart-count">{props.cart.length}</div>
-          ) : null}
+          {cart ? <div id="cart-count">{cart}</div> : null}
         </Link>
       </div>
     </header>

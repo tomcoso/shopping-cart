@@ -19,7 +19,11 @@ const Shop = () => {
           all products
         </button>
         {categories.map((each) => (
-          <button type="button" onClick={() => setCurrentCategory(each)}>
+          <button
+            key={each}
+            type="button"
+            onClick={() => setCurrentCategory(each)}
+          >
             {each}
           </button>
         ))}
@@ -28,7 +32,7 @@ const Shop = () => {
         <h1>{currentCategory === "all" ? "all products" : currentCategory}</h1>
         {products.map((item) => {
           if (item.category === currentCategory || currentCategory === "all") {
-            return <Card itemId={item.id} />;
+            return <Card key={item.id} itemId={item.id} />;
           }
           return null;
         })}
