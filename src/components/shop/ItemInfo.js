@@ -4,6 +4,7 @@ import { ProductContext } from "../../context/ProductContext";
 import { Link, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import ItemStars from "./ItemStars";
+import "../../styling/itemInfo.scss";
 
 const ItemInfo = () => {
   const products = useContext(ProductContext);

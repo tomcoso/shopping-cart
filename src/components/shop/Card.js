@@ -16,6 +16,11 @@ const Card = (props) => {
     dispatch({ type: "add", payload: { id: item.id, amount: 1 } });
   };
 
+  const onClick = () => {
+    window.sessionStorage.setItem("scroll", window.pageYOffset);
+    navigate(`${item.id}`);
+  };
+
   return (
     <div id="item-card" tabIndex="0" key={item.id} data-testid="item-card">
       <div>
@@ -23,16 +28,16 @@ const Card = (props) => {
           <img
             src={item.image}
             alt={item.title}
-            onClick={() => navigate(`${item.id}`)}
+            onClick={onClick}
             tabIndex="0"
           />
         </div>
         <div id="card-info">
-          <h2 onClick={() => navigate(`${item.id}`)}>{item.title}</h2>
+          <h2 onClick={onClick}>{item.title}</h2>
           <span id="card-price" data-testid="prod-price">
             ${item.price}
           </span>
-          <div onClick={() => navigate(`${item.id}`)}>
+          <div onClick={onClick}>
             <ItemStars rating={item.rating} />
           </div>
           <button type="button" onClick={addToCart}>

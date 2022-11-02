@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import { CategoryContext } from "../../context/CategoryContext";
 import Card from "./Card";
@@ -12,6 +12,14 @@ const Shop = () => {
 
   const [currentCategory, setCurrentCategory] = useState("all");
 
+  useEffect(() => {
+    const scroll = window.sessionStorage.getItem("scroll");
+
+    if (scroll) {
+      window.scrollTo(0, scroll);
+    }
+  });
+
   return (
     <main id="shop-root">
       {location.pathname !== "/shop" ? (
@@ -22,7 +30,10 @@ const Shop = () => {
             <button
               type="button"
               className={currentCategory === "all" ? "selected" : ""}
-              onClick={() => setCurrentCategory("all")}
+              onClick={() => {
+                setCurrentCategory("all");
+                window.sessionStorage.removeItem("scroll");
+              }}
             >
               all products
             </button>
@@ -30,7 +41,10 @@ const Shop = () => {
               <button
                 key={each}
                 type="button"
-                onClick={() => setCurrentCategory(each)}
+                onClick={() => {
+                  setCurrentCategory(each);
+                  window.sessionStorage.removeItem("scroll");
+                }}
                 className={currentCategory === each ? "selected" : ""}
               >
                 {each}
