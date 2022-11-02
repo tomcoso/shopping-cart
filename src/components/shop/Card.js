@@ -1,47 +1,43 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import ItemStars from "./ItemStars";
+import "../../styling/card.scss";
+import { useDispatch } from "react-redux";
 
 const Card = (props) => {
   const products = useContext(ProductContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState(1);
 
   const item = products[props.itemId - 1];
 
   const addToCart = () => {
-    dispatch({ type: "add", payload: { id: item.id, amount: amount } });
+    dispatch({ type: "add", payload: { id: item.id, amount: 1 } });
   };
 
   return (
-    <div key={item.id} data-testid="item-card">
-      <img
-        src={item.image}
-        alt={item.title}
-        onClick={() => navigate(`${item.id}`)}
-      />
+    <div id="item-card" tabIndex="0" key={item.id} data-testid="item-card">
       <div>
-        <h2 onClick={() => navigate(`${item.id}`)}>{item.title}</h2>
-        <div id="add-to-cart">
-          <span data-testid="prod-price">${item.price}</span>
-          <input
-            max="10"
-            step="1"
-            type="number"
-            onChange={(e) => {
-              setAmount(Number.parseInt(e.target.value));
-            }}
-            value={amount}
+        <div id="card-img">
+          <img
+            src={item.image}
+            alt={item.title}
+            onClick={() => navigate(`${item.id}`)}
+            tabIndex="0"
           />
+        </div>
+        <div id="card-info">
+          <h2 onClick={() => navigate(`${item.id}`)}>{item.title}</h2>
+          <span id="card-price" data-testid="prod-price">
+            ${item.price}
+          </span>
+          <div onClick={() => navigate(`${item.id}`)}>
+            <ItemStars rating={item.rating} />
+          </div>
           <button type="button" onClick={addToCart}>
             add to cart
           </button>
-        </div>
-        <div onClick={() => navigate(`${item.id}`)}>
-          <ItemStars rating={item.rating} />
         </div>
       </div>
     </div>

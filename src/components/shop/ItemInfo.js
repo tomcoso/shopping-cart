@@ -35,13 +35,18 @@ const ItemInfo = () => {
         <ItemStars rating={item.rating} />
         <div id="add-to-cart">
           <span data-testid="prod-price">${item.price}</span>
-          <input
-            type="number"
-            max="10"
-            step="1"
+          <select
+            onChange={(e) => {
+              setAmount(Number.parseInt(e.target.value));
+            }}
             value={amount}
-            onChange={(e) => setAmount(Number.parseInt(e.target.value))}
-          />
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
           <button type="button" onClick={addToCart}>
             add to cart
           </button>

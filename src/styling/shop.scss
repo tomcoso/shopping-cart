@@ -1,0 +1,83 @@
+$black: #1c1c1c;
+$accent: #8c6b4c;
+$white: #f6f7f9;
+
+@media (max-width: 700px) {
+  // MOBILE
+  :root {
+    --nav-just: start;
+  }
+} 
+@media (min-width: 700px) {
+  // BIG
+  :root {
+    --nav-just: center;
+  }
+}
+
+
+#shop-root {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+
+  nav {
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: var(--nav-just);
+    overflow-x: auto;
+    width: 100%;
+
+    > button {
+      background-color: $white;
+      border: none;
+      padding: 0px 1rem;
+      font-size: 1.1rem;
+      color: $black;
+      cursor: grab;
+      border-right: 2px solid $black
+    }
+
+    > button:last-child {
+      border-right: none;
+    }
+
+    > button.selected {
+      color: $accent;
+    }
+  }
+
+  section {
+    padding: 1rem;
+    width: 100%;
+    box-shadow: inset 0px 0px 10px 10px $white;
+    background-color: white;
+
+    #cards-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      height: min-content;
+      place-content: center;
+      place-items: center;
+      display: grid;
+      grid: min-content / repeat(auto-fit, minmax(20%, 250px));
+    }
+
+    > h1 {
+      display: none;
+      width: 100%;
+      font-weight: 400;
+      font-size: 1.3rem;
+      text-align: center;
+      // border-bottom: 2px solid $black;
+      // padding-left: 1rem;
+    }
+  }
+}
+
+body {
+  overflow-x: hidden;
+}

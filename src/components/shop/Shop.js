@@ -3,6 +3,7 @@ import { ProductContext } from "../../context/ProductContext";
 import { CategoryContext } from "../../context/CategoryContext";
 import Card from "./Card";
 import { Outlet, useLocation } from "react-router-dom";
+import "../../styling/shop.scss";
 
 const Shop = () => {
   const products = useContext(ProductContext);
@@ -12,13 +13,17 @@ const Shop = () => {
   const [currentCategory, setCurrentCategory] = useState("all");
 
   return (
-    <main>
+    <main id="shop-root">
       {location.pathname !== "/shop" ? (
         <Outlet />
       ) : (
         <>
           <nav>
-            <button type="button" onClick={() => setCurrentCategory("all")}>
+            <button
+              type="button"
+              className={currentCategory === "all" ? "selected" : ""}
+              onClick={() => setCurrentCategory("all")}
+            >
               all products
             </button>
             {categories.map((each) => (
@@ -26,6 +31,7 @@ const Shop = () => {
                 key={each}
                 type="button"
                 onClick={() => setCurrentCategory(each)}
+                className={currentCategory === each ? "selected" : ""}
               >
                 {each}
               </button>
@@ -35,15 +41,17 @@ const Shop = () => {
             <h1>
               {currentCategory === "all" ? "all products" : currentCategory}
             </h1>
-            {products.map((item) => {
-              if (
-                item.category === currentCategory ||
-                currentCategory === "all"
-              ) {
-                return <Card key={item.id} itemId={item.id} />;
-              }
-              return null;
-            })}
+            <div id="cards-wrapper">
+              {products.map((item) => {
+                if (
+                  item.category === currentCategory ||
+                  currentCategory === "all"
+                ) {
+                  return <Card key={item.id} itemId={item.id} />;
+                }
+                return null;
+              })}
+            </div>
           </section>
         </>
       )}
