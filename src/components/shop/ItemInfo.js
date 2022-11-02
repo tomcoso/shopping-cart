@@ -23,34 +23,42 @@ const ItemInfo = () => {
   };
 
   return item ? (
-    <div>
+    <div id="item-info">
       <div id="close-button">
         <Link to="/shop">
           <FiArrowLeft color="black" size="30px" />
         </Link>
       </div>
-      <img src={item.image} alt={item.title} />
       <div>
-        <h1>{item.title}</h1>
-        <p data-testid="prod-description">{item.description}</p>
-        <ItemStars rating={item.rating} />
-        <div id="add-to-cart">
-          <span data-testid="prod-price">${item.price}</span>
-          <select
-            onChange={(e) => {
-              setAmount(Number.parseInt(e.target.value));
-            }}
-            value={amount}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <button type="button" onClick={addToCart}>
-            add to cart
-          </button>
+        <div id="item-img">
+          <img src={item.image} alt={item.title} />
+        </div>
+
+        <div id="main-item-info">
+          <h1>{item.title}</h1>
+          <p data-testid="prod-description">{item.description}</p>
+          <div>
+            <ItemStars rating={item.rating} />
+          </div>
+
+          <div id="add-to-cart">
+            <span data-testid="prod-price">${item.price}</span>
+            <select
+              onChange={(e) => {
+                setAmount(Number.parseInt(e.target.value));
+              }}
+              value={amount}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="button" onClick={addToCart}>
+              add to cart
+            </button>
+          </div>
         </div>
       </div>
     </div>

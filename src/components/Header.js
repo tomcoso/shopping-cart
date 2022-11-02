@@ -38,14 +38,34 @@ const Header = () => {
               }}
             />
             <div id={navDisplay}>
-              <Link to="/">Home</Link>
-              <Link to="shop">Shop</Link>
+              <Link
+                to="/"
+                onClick={() => window.sessionStorage.removeItem("scroll")}
+              >
+                Home
+              </Link>
+              <Link
+                to="shop"
+                onClick={() => window.sessionStorage.removeItem("scroll")}
+              >
+                Shop
+              </Link>
             </div>
           </>
         ) : (
           <>
-            <Link to="/">Home</Link>
-            <Link to="shop">Shop</Link>
+            <Link
+              to="/"
+              onClick={() => window.sessionStorage.removeItem("scroll")}
+            >
+              Home
+            </Link>
+            <Link
+              to="shop"
+              onClick={() => window.sessionStorage.removeItem("scroll")}
+            >
+              Shop
+            </Link>
           </>
         )}
       </nav>
