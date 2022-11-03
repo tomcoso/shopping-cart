@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import ItemStars from "./ItemStars";
 import "../../styling/itemInfo.scss";
@@ -10,6 +10,7 @@ const ItemInfo = () => {
   const products = useContext(ProductContext);
   const itemId = useParams().itemid;
   const [item, setItem] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setItem(products.find((i) => i.id === +itemId));
@@ -19,15 +20,13 @@ const ItemInfo = () => {
 
   const dispatch = useDispatch();
   const addToCart = () => {
-    dispatch({ type: "add", payload: { id: itemId, amount } });
+    dispatch({ type: "add", payload: { id: +itemId, amount: amount } });
   };
 
   return item ? (
     <div id="item-info">
       <div id="close-button">
-        <Link to="/shop">
-          <FiArrowLeft color="black" size="30px" />
-        </Link>
+        <FiArrowLeft color="black" size="30px" onClick={() => navigate(-1)} />
       </div>
       <div>
         <div id="item-img">

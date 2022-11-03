@@ -31,6 +31,7 @@ const App = () => {
           <CategoryContext.Provider value={categories}>
             <Header />
             <Outlet />
+            {/* footer */}
           </CategoryContext.Provider>
         </ProductContext.Provider>
       </Provider>

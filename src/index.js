@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Shop from "./components/shop/Shop";
 import ItemInfo from "./components/shop/ItemInfo";
 import NotFound from "./NotFound";
+import Cart from "./components/shop/Cart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Route path="/shop" element={<Shop />}>
           <Route path=":itemid" element={<ItemInfo />} />
         </Route>
+        <Route path="/shopping-cart" element={<Cart />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -12,19 +12,15 @@ const cartReducer = createReducer([], (builder) => {
       }
       if (!done) state.push(action.payload);
     })
-    .addCase("remove", (state, action) => {
-      for (let each of state) {
-        if (each.id === action.payload.id) {
-          each.amount -= action.payload.amount;
-        }
-      }
-      state.filter((item) => {
-        if (item.amount > 0) return item;
-        return null;
-      });
+    .addCase("set", (state, action) => {
+      const pl = action.payload;
+      state.find((x) => x.id === pl.id).amount = pl.amount;
     })
     .addCase("clear", (state, action) => {
-      state = [];
+      return [];
+    })
+    .addCase("clean", (state, action) => {
+      return state.filter((x) => x.amount > 0);
     });
 });
 
