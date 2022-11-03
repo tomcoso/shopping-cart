@@ -59,6 +59,7 @@ header {
     }
   }
   #cart-icon {
+    user-select: none;
     position: relative;
     path {
       stroke-width: 1px;

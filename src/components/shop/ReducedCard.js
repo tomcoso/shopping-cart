@@ -43,6 +43,7 @@ const ReducedCard = (props) => {
   const toItem = () => {
     window.sessionStorage.setItem("scroll", window.pageYOffset);
     navigate(`/shop/${item.id}`);
+    props.close();
   };
 
   return (

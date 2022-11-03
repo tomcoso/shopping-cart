@@ -26,7 +26,7 @@ const ItemInfo = () => {
   return item ? (
     <div id="item-info">
       <div id="close-button">
-        <FiArrowLeft color="black" size="30px" onClick={() => navigate(-1)} />
+        <FiArrowLeft color="#1c1c1c" size="30px" onClick={() => navigate(-1)} />
       </div>
       <div>
         <div id="item-img">

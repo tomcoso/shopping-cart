@@ -1,15 +1,18 @@
-import { Link, useLocation } from "react-router-dom";
 import "../styling/header.scss";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Cart from "./shop/Cart";
 
 const Header = () => {
   const VisualViewport = window.visualViewport;
   const location = useLocation();
   const [width, setWidth] = useState(VisualViewport.width);
   const [navDisplay, setNavDisplay] = useState("mobile-nav-hidden");
+  const [cartDisplay, setCartDisplay] = useState(false);
 
   const cart = useSelector((state) => {
     return state.cart.reduce((a, b) => a + b.amount, 0);
@@ -18,6 +21,10 @@ const Header = () => {
   VisualViewport.addEventListener("resize", (e) => {
     setWidth(VisualViewport.width);
   });
+
+  const toggleCart = () => {
+    setCartDisplay(!cartDisplay);
+  };
 
   return (
     <header
@@ -70,14 +77,14 @@ const Header = () => {
         )}
       </nav>
       <div id="cart-icon" data-testid="shopping-cart">
-        <Link to="shopping-cart">
-          <HiOutlineShoppingBag
-            size="35px"
-            color={cart ? "#8c6b4c" : "#1c1c1c"}
-          />
-          {cart ? <div id="cart-count">{cart}</div> : null}
-        </Link>
+        <HiOutlineShoppingBag
+          size="35px"
+          color={cart ? "#8c6b4c" : "#1c1c1c"}
+          onClick={toggleCart}
+        />
+        {cart ? <div id="cart-count">{cart}</div> : null}
       </div>
+      <Cart status={cartDisplay} close={toggleCart} />
     </header>
   );
 };

@@ -1,16 +1,93 @@
+$black: #1c1c1c;
+$accent: #8c6b4c;
+$white: #f6f7f9;
+
+@media (min-width: 600px) {
+  :root {
+    --flex-wrap: nowrap;
+    --hover-bg: $black;
+    --hover-color: white;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --flex-wrap: wrap;
+    --hover-bg: white;
+    --hover-color: $black;
+  }
+}
+
 .reduced-card {
+  background-color: white;
   padding: 1rem;
-  border: 1px solid #000;
-  margin: 1rem;
+  border-bottom: 1px solid $black;
+  display: flex;
+  flex-wrap: var(--flex-wrap);
+  justify-content: center;
+  gap: 1rem;
  
   #reduced-card-image {
-    width: 100px;
+    min-width: 100px;
     height: 100px;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  #reduced-card-info {
+    width: 100%;
+    display: grid;
+    grid: 1fr min-content / 1fr repeat(2, min-content);
+    gap: .5rem;
+
+    h2 {
+      grid-column: 1/4;
+      grid-row: 1/2;
+      font-size: .9rem;
+      color: $black;
+      cursor: grab;
+    }
+
+    > span {
+      font-family: 'PT Serif', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    > div {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 0 5px;
+
+      span {
+        width: 2ch;
+        text-align: center;
+        font-size: 1rem;
+        font-family: 'PT Serif', serif;
+        user-select: none;
+      }
+    }
+    > button {
+        padding: 1px 5px;
+        font-size: .9rem;
+        background-color: $white;
+        border: 1px solid $black;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: $black;
+          color: white;
+        } 
+        
+        &:active {
+          background-color: $black;
+          color: white;
+        }
     }
   }
 }

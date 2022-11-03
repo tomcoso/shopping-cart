@@ -3,7 +3,7 @@ import "../styling/home.scss";
 
 function Home() {
   return (
-    <div id="home-root">
+    <main id="home-root">
       <section>
         <div id="home-top">
           <h1>wear</h1>
@@ -16,7 +16,7 @@ function Home() {
           </Link>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 
