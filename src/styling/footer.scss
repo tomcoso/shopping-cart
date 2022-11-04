@@ -1,0 +1,21 @@
+footer {
+  height: 4vh;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: sticky;
+  top: 100%;
+  z-index: 1;
+
+  span {
+    font-size: 0.8rem;
+    color: #1c1c1c;
+    filter: opacity(0.8);
+  }
+  a {
+    line-height: 100%;
+    filter: opacity(0.8);
+  }
+}

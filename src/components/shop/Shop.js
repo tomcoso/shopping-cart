@@ -4,6 +4,7 @@ import { CategoryContext } from "../../context/CategoryContext";
 import Card from "./Card";
 import { Outlet, useLocation } from "react-router-dom";
 import "../../styling/shop.scss";
+import Loader from "../Loader";
 
 const Shop = () => {
   const products = useContext(ProductContext);
@@ -24,6 +25,8 @@ const Shop = () => {
     <main id="shop-root">
       {location.pathname !== "/shop" ? (
         <Outlet />
+      ) : products.length === 0 ? (
+        <Loader />
       ) : (
         <>
           <nav>

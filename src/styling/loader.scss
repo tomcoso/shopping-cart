@@ -1,0 +1,37 @@
+@keyframes circle {
+  from {
+    outline-offset: -5px;
+    width: 50px;
+    height: 50px;
+  }
+  to {
+    outline-offset: 30px;
+    outline-width: 1px;
+    outline-color: #1c1c1c;
+    border-color: #1c1c1c;
+    border-width: 1px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+
+  #circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid rgba(0, 0, 0, 0);
+    outline: 5px solid rgba(0, 0, 0, 0);
+    animation: circle 600ms ease-out infinite alternate;
+  }
+}

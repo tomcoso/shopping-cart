@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import ItemStars from "./ItemStars";
 import "../../styling/itemInfo.scss";
+import Loader from "../Loader";
 
 const ItemInfo = () => {
   const products = useContext(ProductContext);
@@ -71,6 +72,8 @@ const ItemInfo = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <Loader />
+  );
 };
 export default ItemInfo;

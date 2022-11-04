@@ -1,4 +1,4 @@
-@media (min-width : 1000px) {
+@media (min-width: 1000px) {
   // BIG
   :root {
     --section-padding: 0px 25vw;
@@ -6,15 +6,15 @@
     --brightness: 1;
   }
 }
-@media (max-width : 1000px) {
+@media (max-width: 1000px) {
   // TABLET
- :root {
-  --section-padding: 0px 10vw;
-  --bg-position: 70%;
-  --brightness: 1;
- }
+  :root {
+    --section-padding: 0px 10vw;
+    --bg-position: 70%;
+    --brightness: 1;
+  }
 }
-@media (max-width : 600px) {
+@media (max-width: 600px) {
   // MOBILE
   :root {
     --section-padding: 0px 5vw;
@@ -39,21 +39,20 @@
 }
 
 #home-root {
-  background-image: url('../assets/pexels-burst-374890-min.jpg');
+  background-image: url("../assets/pexels-burst-374890-min.jpg");
   background-size: var(--bg-size);
   background-position: var(--bg-position);
   filter: grayscale(20%);
   filter: brightness(var(--brightness));
   z-index: 0;
   margin-top: -10vh;
+  margin-bottom: -4vh;
   padding-top: 10vh;
   height: 100vh;
   width: 100vw;
 
   display: flex;
   justify-content: right;
-
-  
 
   $black: rgb(27, 27, 27);
 
@@ -70,7 +69,7 @@
 
   #home-top {
     display: grid;
-    grid: repeat(2, 1fr)/ 100px 1fr;
+    grid: repeat(2, 1fr) / 100px 1fr;
     gap: 1rem;
     white-space: nowrap;
 
@@ -96,7 +95,7 @@
     position: relative;
     align-items: center;
 
-    p{
+    p {
       grid-column: 2/3;
       border-left: 2px solid $black;
       padding-left: 10px;
@@ -107,7 +106,7 @@
       color: $black;
       width: min-content;
       font-weight: 600;
-      
+
       padding: 0px 20px;
       font-size: 1.5rem;
       line-height: 300%;
@@ -121,6 +120,4 @@
       }
     }
   }
-
-  
 }

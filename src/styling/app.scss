@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'cinzel';
+  font-family: "cinzel";
   src: url(../assets/Cinzel/Cinzel-VariableFont_wght.ttf) format(truetype);
 }
 
@@ -7,10 +7,11 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: 'cinzel', 'Times New Roman', Times, serif;
+  font-family: "cinzel", "Times New Roman", Times, serif;
 }
 #root {
   width: auto;
   height: 100vh;
   background-color: #f6f7f9;
+  position: relative;
 }

@@ -3,9 +3,11 @@ import { Outlet } from "react-router-dom";
 import { ProductContext } from "./context/ProductContext";
 import { CategoryContext } from "./context/CategoryContext";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./styling/app.scss";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import Loader from "./components/Loader";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +33,7 @@ const App = () => {
           <CategoryContext.Provider value={categories}>
             <Header />
             <Outlet />
-            {/* footer */}
+            <Footer />
           </CategoryContext.Provider>
         </ProductContext.Provider>
       </Provider>

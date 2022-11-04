@@ -1,0 +1,26 @@
+@keyframes light {
+  from {
+    text-shadow: none;
+  }
+  to {
+    text-shadow: 0px 0px 10px white;
+  }
+}
+
+#not-found {
+  padding: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    animation: light 1000ms infinite alternate;
+  }
+}
