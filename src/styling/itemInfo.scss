@@ -2,13 +2,13 @@ $black: #1c1c1c;
 $accent: #8c6b4c;
 $white: #f6f7f9;
 
-@media (max-width : 700px) {
+@media (max-width: 700px) {
   // MOBILE
   :root {
     --cta-justify: center;
   }
 }
-@media (min-width : 700px) {
+@media (min-width: 700px) {
   // BIG
   :root {
     --cta-justify: flex-start;
@@ -32,7 +32,7 @@ $white: #f6f7f9;
   gap: 1rem;
 
   #close-button {
-        align-self: flex-start;
+    align-self: flex-start;
   }
 
   > div:nth-child(2) {
@@ -42,14 +42,13 @@ $white: #f6f7f9;
     // align-items: center;
     gap: 1rem;
     height: 100%;
-    
 
     #item-img {
       flex-grow: 1;
       flex-basis: 35%;
       min-width: 300px;
       max-width: 400px;
-      
+
       padding: 2rem;
       background-color: white;
       border: 2px solid $accent;
@@ -81,7 +80,7 @@ $white: #f6f7f9;
       p {
         font-size: 1rem;
         line-height: 170%;
-        font-family: 'PT Serif' , serif;
+        font-family: "PT Serif", serif;
       }
 
       > div:nth-child(3) {
@@ -105,7 +104,7 @@ $white: #f6f7f9;
         }
 
         select {
-          font-family: 'PT Serif', serif;
+          font-family: "PT Serif", serif;
           font-size: 1rem;
           padding: 2px 5px;
           border: 1px solid $black;
@@ -118,17 +117,18 @@ $white: #f6f7f9;
           padding: 3px 10px;
           font-size: 1.2rem;
           background-color: $white;
-          border: 1px solid $accent;
+          border: 1px solid $black;
           border-radius: 5px;
-          color: $accent;
+          color: $black;
           font-weight: 600;
           cursor: grab;
 
+          &:hover,
           &:active {
-            box-shadow: inset 0px 0px 5px -1px $black;
+            background-color: $black;
+            color: $white;
           }
         }
-
       }
     }
   }

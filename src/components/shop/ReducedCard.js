@@ -49,15 +49,28 @@ const ReducedCard = (props) => {
   return (
     <div className="reduced-card">
       <div id="reduced-card-image">
-        <img src={item.image} alt={item.title} onClick={toItem} />
+        <img
+          tabIndex={"0"}
+          src={item.image}
+          alt={item.title}
+          onClick={toItem}
+        />
       </div>
       <div id="reduced-card-info">
         <h2 onClick={toItem}>{item.title}</h2>
         <span>${item.price}</span>
         <div id="reduced-card-count">
-          <AiOutlineMinus size="1.5rem" onClick={decreaseAmount} />
+          <AiOutlineMinus
+            tabIndex={"0"}
+            size="1.5rem"
+            onClick={decreaseAmount}
+          />
           <span>{cartItem.amount}</span>
-          <AiOutlinePlus size="1.5rem" onClick={increaseAmount} />
+          <AiOutlinePlus
+            tabIndex={"0"}
+            size="1.5rem"
+            onClick={increaseAmount}
+          />
         </div>
         <button type="button" onClick={removeItem}>
           remove

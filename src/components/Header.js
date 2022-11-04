@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "./shop/Cart";
 
 const Header = () => {
@@ -12,7 +12,8 @@ const Header = () => {
   const location = useLocation();
   const [width, setWidth] = useState(VisualViewport.width);
   const [navDisplay, setNavDisplay] = useState("mobile-nav-hidden");
-  const [cartDisplay, setCartDisplay] = useState(false);
+  const cartDisplay = useSelector((state) => state.display);
+  const dispatch = useDispatch();
 
   const cart = useSelector((state) => {
     return state.cart.reduce((a, b) => a + b.amount, 0);
@@ -23,7 +24,7 @@ const Header = () => {
   });
 
   const toggleCart = () => {
-    setCartDisplay(!cartDisplay);
+    dispatch({ type: "toggle" });
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ const ItemInfo = () => {
   const products = useContext(ProductContext);
   const itemId = useParams().itemid;
   const [item, setItem] = useState(null);
+  const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,10 @@ const ItemInfo = () => {
   const dispatch = useDispatch();
   const addToCart = () => {
     dispatch({ type: "add", payload: { id: +itemId, amount: amount } });
+  };
+
+  const goToCart = () => {
+    dispatch({ type: "toggle" });
   };
 
   return item ? (
@@ -57,6 +62,11 @@ const ItemInfo = () => {
             <button type="button" onClick={addToCart}>
               add to cart
             </button>
+            {cart.find((x) => x.id === +itemId) ? (
+              <button type="button" onClick={goToCart}>
+                view cart
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

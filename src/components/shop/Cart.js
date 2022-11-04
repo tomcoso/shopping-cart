@@ -32,10 +32,16 @@ const Cart = (props) => {
       id="shopping-cart"
       className={props.status ? "show" : "hide"}
       onClick={close}
+      tabIndex="1"
     >
       <div onClick={(e) => e.stopPropagation()}>
         <div id="heading">
-          <FiArrowRight color="#1c1c1c" size="40px" onClick={props.close} />
+          <FiArrowRight
+            color="#1c1c1c"
+            size="40px"
+            onClick={props.close}
+            tabIndex="0"
+          />
           <h1>your shopping cart</h1>
         </div>
 
@@ -55,7 +61,9 @@ const Cart = (props) => {
           <span>
             Subtotal : <span>${getTotal().toFixed(2)}</span>
           </span>
-          <button type="button">proceed to checkout</button>
+          <button type="button" tabIndex="0">
+            proceed to checkout
+          </button>
         </div>
       </div>
     </section>,
