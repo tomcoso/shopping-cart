@@ -1,6 +1,6 @@
 {
-  "short_name": "Shopping Cart",
-  "name": "Shopping cart webapp",
+  "short_name": "Conditum Shop",
+  "name": "Conditum. Single page shop application (SPA). Built using React, Redux, and react-router-dom",
   "icons": [
     {
       "src": "favicon.ico",
