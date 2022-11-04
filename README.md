@@ -8,6 +8,8 @@ Technologies :
 - Jest
 - Testing-library
 
+API: [Fake Store API](https://fakestoreapi.com/)
+
 Conditum is a mock shopping single page application (SPA) built using React.
 
 I implemented Redux to manage state but also decided to learn react context.
