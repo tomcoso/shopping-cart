@@ -48,13 +48,19 @@ const Header = () => {
             <div id={navDisplay}>
               <Link
                 to="/"
-                onClick={() => window.sessionStorage.removeItem("scroll")}
+                onClick={() => {
+                  window.sessionStorage.removeItem("scroll");
+                  setNavDisplay("mobile-nav-hidden");
+                }}
               >
                 Home
               </Link>
               <Link
                 to="shop"
-                onClick={() => window.sessionStorage.removeItem("scroll")}
+                onClick={() => {
+                  window.sessionStorage.removeItem("scroll");
+                  setNavDisplay("mobile-nav-hidden");
+                }}
               >
                 Shop
               </Link>
